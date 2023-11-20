@@ -1,14 +1,23 @@
 #include <stdio.h>
 
+// Write a program to count blanks, tabs and newlines
 int main()
 {
-    int c, count;
-    count = 0;
+    int c, blanks, tabs, newlines;
+    blanks = tabs = newlines = 0;
 
-    while((c = getchar()) != EOF)
-        if(c == '\n' || c == '\t' || c == ' ') 
-            count++;
+    while ((c = getchar()) != EOF)
+    {
+        if (c == '\n')
+            newlines++;
 
-    printf("%d\n", count);
+        if (c == '\t')
+            tabs++;
+
+        if (c == ' ')
+            blanks++;
+    }
+
+    printf("%4d%4d%4d\n", blanks, tabs, newlines);
     printf("goodbye\n");
 }
