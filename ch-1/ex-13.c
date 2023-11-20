@@ -23,10 +23,9 @@ int main()
         {
             if (state == IN)
             {
-                if (currentword > MAX_WORD_SIZE)
-                {
+                if (currentword > MAX_WORD_SIZE)                
                     currentword = MAX_WORD_SIZE;
-                }
+                
                 charcount[currentword - 1]++;
             }
             state = OUT;
