@@ -9,7 +9,6 @@
 // is more challenging.
 int main()
 {
-
     int charcount[MAX_WORD_SIZE];
 
     for (int i = 0; i < MAX_WORD_SIZE; i++)
