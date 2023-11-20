@@ -38,7 +38,7 @@ int main()
         }
     }
 
-    printf("Horizontal hostogram\n");
+    printf("Horizontal histogram\n");
     for (int i = 0; i < MAX_WORD_SIZE; i++)
     {
         printf("%2d:", i + 1);
