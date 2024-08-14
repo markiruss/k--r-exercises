@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+// Write a program to print all input lines that are longer than 80 caracters
+
 #define MAXLINE 1000
 
 int getline(char line[], int maxline);
@@ -8,23 +10,16 @@ void copy(char to[], char from[]);
 int main()
 {
     int len;
-    int max;
     char line[MAXLINE];
-    char longest[MAXLINE];
-
-    max = 0;
 
     while ((len = getline(line, MAXLINE)) > 0)
-        if (len > max)
-        {
-            max = len;
-            copy(longest, line);
-        }
-    if (max > 0)
-        printf("Longest line:\n%s\n", longest);
+    {
+        if (len > 80)
+            printf("\nLine Length: %d\n%s\n", len, line);
+    }
     return 0;
 }
-// hello
+
 int getline(char s[], int lim)
 {
     int c, i;
@@ -39,12 +34,4 @@ int getline(char s[], int lim)
 
     s[i] = '\0';
     return i;
-}
-
-void copy(char to[], char from[])
-{
-    int i;
-    i = 0;
-    while ((to[i] = from[i]) != '\0')
-        i++;
 }
