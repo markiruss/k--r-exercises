@@ -5,10 +5,12 @@
 // long lines, and if there are no blanks or tabs before the specified column
 
 #define MAXLINE 10
+#define TABWIDTH 4
 #define TRUE 1
 #define FALSE 0
 
 int writeword(int word[], int wordlength, int pos, int maxline);
+int writewhitespace(int c, int pos, int maxline, int tabwidth);
 
 int main()
 {
@@ -28,12 +30,7 @@ int main()
             }
             else
             {
-                if (pos > MAXLINE)
-                {
-                    putchar('\n');
-                    pos = 0;
-                }
-                putchar(c);
+                pos = writewhitespace(c, pos, MAXLINE, TABWIDTH);
             }
         }
         else
@@ -57,16 +54,7 @@ int main()
             {
                 pos = writeword(wordbuffer, wordbufferpos, pos, MAXLINE);
                 wordbufferpos = 0;
-                if (pos > MAXLINE)
-                {
-                    putchar('\n');
-                    pos = 0;
-                }
-                putchar(c);
-                if (c == '\n')
-                {
-                    pos = 0;
-                }
+                pos = writewhitespace(c, pos, MAXLINE, TABWIDTH);
                 inword = FALSE;
             }
         }
@@ -83,6 +71,43 @@ int writeword(int word[], int wordlength, int pos, int maxline)
     for (int i = 0; i < wordlength; i++)
     {
         putchar(word[i]);
+    }
+    return pos;
+}
+
+int writewhitespace(int c, int pos, int maxline, int tabwidth)
+{
+    if (pos > MAXLINE)
+    {
+        putchar('\n');
+        pos = 0;
+    }
+    if (c == '\t')
+    {
+        int i = tabwidth;
+        while (i > 0)
+        {
+            if (pos > MAXLINE)
+            {
+                putchar('\n');
+                pos = 0;
+            }
+            putchar(' ');
+            if (i > 1)
+            {
+                // Not on the last one otherwise there will be too many increments
+                pos++;
+            }
+            i--;
+        }
+    }
+    else
+    {
+        putchar(c);
+    }
+    if (c == '\n')
+    {
+        pos = 0;
     }
     return pos;
 }
