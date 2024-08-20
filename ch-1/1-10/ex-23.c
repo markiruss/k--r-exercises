@@ -74,6 +74,10 @@ void writeto(char endchar)
     while ((c = getchar()) != endchar)
     {
         putchar(c);
+        if (c == '\\')
+        {
+            putchar(getchar());
+        }
     }
     putchar(c);
 }
