@@ -25,7 +25,6 @@ int main()
 int any(char s1[], char s2[])
 {
     int i;
-    int returnval = -1;
     for (i = 0; s1[i] != '\0'; i++)
     {
         if (exists(s2, s1[i]) == TRUE)
