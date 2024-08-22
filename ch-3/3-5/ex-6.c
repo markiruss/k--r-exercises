@@ -2,28 +2,25 @@
 #include <string.h>
 #include <limits.h>
 
-// In a two's compliment number representation, our version of itoa does not handle the largest
-// negative number, that is, the value of n Equal to -(2^(wordsize-1)). Explain why not. Modify it
-// to print that value correctly, regardless fo the machine on which it runs.
+// Write a version of itoa that accepts three arguments instead of two. The third argument
+// is a minimum field width; the converted number must be padded with blanks on the left
+// if necessary to make it wide enough
 
-// In a two's compliment number the largest negative number is 1 further from zero than the largest
-// positive number, so you cannot get n = -n for this value.
-
-void itoa(int n, char a[]);
+void itoa(int n, char a[], int min_w);
 void reverse(char s[]);
 
 int main()
 {
     char arr[100];
 
-    itoa(INT_MIN, arr);
+    itoa(500, arr, 10);
 
-    printf("value: %s", arr);
+    printf("%s", arr);
 
     return 0;
 }
 
-void itoa(int n, char s[])
+void itoa(int n, char s[], int min_w)
 {
     int i, sign, multiplier;
     multiplier = 1;
@@ -37,6 +34,10 @@ void itoa(int n, char s[])
 
     if (sign < 0)
         s[i++] = '-';
+
+    while (i < min_w)
+        s[i++] = ' ';
+
     s[i] = '\0';
     reverse(s);
 }
