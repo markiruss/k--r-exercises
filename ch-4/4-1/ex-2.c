@@ -6,7 +6,7 @@ int main()
 {
     double atof(char[]);
 
-    double num = atof("+456e+5");
+    double num = atof("+456e1");
     printf("num is %f", num);
 
     return 0;
